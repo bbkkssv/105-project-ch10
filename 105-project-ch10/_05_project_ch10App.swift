@@ -11,7 +11,7 @@ import SwiftUI
 struct _05_project_ch10App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SpecialistView()
         }
     }
 }
