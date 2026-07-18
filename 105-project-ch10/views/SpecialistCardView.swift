@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SpecialistCardView: View {
-    let specialist: Specialist
+struct CampsiteCardView: View {
+    let campsite: Campsite
 
     @State private var isLiked: Bool = false
     @State private var isExpanded: Bool = false
@@ -16,22 +16,22 @@ struct SpecialistCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 14) {
-                Image(systemName: specialist.imageReference)
+                Image(systemName: campsite.imageReference)
                     .font(.system(size: 38))
                     .foregroundStyle(Color("MainColor"))
                     .frame(width: 54, height: 54)
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(specialist.name)
+                    Text(campsite.name)
                         .font(.headline.bold())
                         .foregroundStyle(Color("MainColor"))
                         .lineLimit(1)
 
-                    Text(specialist.specialty)
+                    Text(campsite.hookupType)
                         .font(.subheadline)
                         .foregroundStyle(.black)
 
-                    Text("$\(specialist.minPrice, specifier: "%.2f") - $\(specialist.maxPrice, specifier: "%.2f")")
+                    Text("$\(campsite.minPrice, specifier: "%.2f") - $\(campsite.maxPrice, specifier: "%.2f")")
                         .font(.subheadline.bold())
                         .foregroundStyle(.black)
                 }
@@ -47,7 +47,7 @@ struct SpecialistCardView: View {
                             .font(.caption)
                             .foregroundStyle(.orange)
 
-                        Text("\(specialist.reviewRating, specifier: "%.1f")")
+                        Text("\(campsite.reviewRating, specifier: "%.1f")")
                             .font(.caption.bold())
                             .foregroundStyle(.black)
                     }
@@ -64,9 +64,9 @@ struct SpecialistCardView: View {
                 }
             }
 
-            if !specialist.description.isEmpty {
+            if !campsite.description.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(specialist.description)
+                    Text(campsite.description)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .lineLimit(isExpanded ? nil : 2)
@@ -90,22 +90,22 @@ struct SpecialistCardView: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(specialist.name), \(specialist.specialty), rated \(String(format: "%.1f", specialist.reviewRating)) stars, price $\(String(format: "%.2f", specialist.minPrice)) to $\(String(format: "%.2f", specialist.maxPrice))")
-        .accessibilityHint("Double tap to like. Double tap Book to schedule an appointment with \(specialist.name)")
+        .accessibilityLabel("\(campsite.name), \(campsite.hookupType), rated \(String(format: "%.1f", campsite.reviewRating)) stars, price $\(String(format: "%.2f", campsite.minPrice)) to $\(String(format: "%.2f", campsite.maxPrice))")
+        .accessibilityHint("Double tap to like. Double tap Book to reserve \(campsite.name)")
     }
 }
 
 #Preview {
     NavigationStack {
-        SpecialistCardView(
-            specialist: Specialist(
-                name: "Spiderman",
-                specialty: "Mohawks",
-                minPrice: 999,
-                maxPrice: 999,
-                imageReference: "person.fill",
-                reviewRating: 4.9,
-                description: "Friendly neighborhood specialist with years of experience swinging into action for all your styling needs. Punctual, precise, and always on time."
+        CampsiteCardView(
+            campsite: Campsite(
+                name: "Riverside Pull-Through",
+                hookupType: "Full Hookup",
+                minPrice: 45,
+                maxPrice: 65,
+                imageReference: "tent",
+                reviewRating: 4.8,
+                description: "Spacious pull-through site along the river with full hookups. Perfect for large rigs with easy in-out access and scenic water views."
             )
         )
     }

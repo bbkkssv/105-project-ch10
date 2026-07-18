@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SpecialistView: View {
+struct CampsiteView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -20,14 +20,14 @@ struct SpecialistView: View {
 
     private var headerSection: some View {
         VStack(spacing: 22) {
-            Text("Find Your\nBeauty Specialist")
+            Text("Find Your\nCampsite")
                 .font(.largeTitle.bold())
                 .foregroundStyle(Color.white)
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)
-                .accessibilityLabel("Find your beauty specialist")
+                .accessibilityLabel("Find your campsite")
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityIdentifier("specialistView.title")
+                .accessibilityIdentifier("campsiteView.title")
 
             TextField("Search", text: .constant(""))
                 .padding()
@@ -36,9 +36,9 @@ struct SpecialistView: View {
                 .padding(.horizontal, 42)
                 .accessibilityLabel("Search")
                 .accessibilityValue("")
-                .accessibilityHint("Enter a specialist name or service to search")
+                .accessibilityHint("Enter a campsite name or type to search")
                 .accessibilityAddTraits(.isSearchField)
-                .accessibilityIdentifier("specialistView.searchField")
+                .accessibilityIdentifier("campsiteView.searchField")
         }
         .padding(.bottom, 30)
     }
@@ -47,7 +47,7 @@ struct SpecialistView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 30) {
                 categoriesSection
-                topSpecialistSection
+                topCampsitesSection
             }
             .padding(.horizontal, 32)
             .padding(.vertical, 28)
@@ -63,7 +63,7 @@ struct SpecialistView: View {
                     .font(.title2.bold())
                     .accessibilityLabel("Categories")
                     .accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier("specialistView.categoriesTitle")
+                    .accessibilityIdentifier("campsiteView.categoriesTitle")
 
                 Spacer()
 
@@ -75,48 +75,37 @@ struct SpecialistView: View {
                 .accessibilityLabel("See all categories")
                 .accessibilityHint("Opens the full list of categories")
                 .accessibilityAddTraits(.isLink)
-                .accessibilityIdentifier("specialistView.seeAllLink")
+                .accessibilityIdentifier("campsiteView.seeAllLink")
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 18) {
-                    
-                    CategoryCardView(icon: "hand.raised", title: "Nails", destination: CategoriesView())
-                    
-                    CategoryCardView(icon: "eye", title: "Lashes", destination: BookAppointmentView())
-                    
-                    CategoryCardView(icon: "hand.raised", title: "Nails", destination: CategoriesView())
-                    
-                    CategoryCardView(icon: "eye", title: "Lashes", destination: BookAppointmentView())
-                    
-                    CategoryCardView(icon: "hand.raised", title: "Nails", destination: CategoriesView())
-                    
-                    CategoryCardView(icon: "eye", title: "Lashes", destination: BookAppointmentView())
-//                    CategoryCardView()
-//                    CategoryCardView()
-//                    CategoryCardView()
-
+                    CategoryCardView(icon: "car", title: "RV Sites", destination: CategoriesView())
+                    CategoryCardView(icon: "tent", title: "Tent Sites", destination: CategoriesView())
+                    CategoryCardView(icon: "house", title: "Cabins", destination: CategoriesView())
+                    CategoryCardView(icon: "fish", title: "Fishing", destination: CategoriesView())
                 }
             }
         }
     }
 
-    private var topSpecialistSection: some View {
-            VStack(alignment: .leading, spacing: 18) {
-                Text("Top Specialist")
-                    .font(.title2.bold())
-                    .accessibilityLabel("Top specialists")
-                    .accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier("specialistView.topSpecialistTitle")
+    private var topCampsitesSection: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Text("Top Campsites")
+                .font(.title2.bold())
+                .accessibilityLabel("Top campsites")
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("campsiteView.topCampsitesTitle")
 
-                VStack(spacing: 18) {
-                    ForEach(Specialist.mocks, id: \.name) { specialist in
-                        SpecialistCardView(specialist: specialist)
-                    }
+            VStack(spacing: 18) {
+                ForEach(Campsite.mocks, id: \.name) { campsite in
+                    CampsiteCardView(campsite: campsite)
                 }
             }
         }
     }
+}
+
 #Preview {
-    SpecialistView()
+    CampsiteView()
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Specialist {
+class Campsite {
     let name: String
-    let specialty: String
+    let hookupType: String
     let minPrice: Double
     let maxPrice: Double
     let imageReference: String
@@ -18,7 +18,7 @@ class Specialist {
 
     init(
         name: String,
-        specialty: String,
+        hookupType: String,
         minPrice: Double,
         maxPrice: Double,
         imageReference: String,
@@ -26,7 +26,7 @@ class Specialist {
         description: String = ""
     ) {
         self.name = name
-        self.specialty = specialty
+        self.hookupType = hookupType
         self.minPrice = minPrice
         self.maxPrice = maxPrice
         self.imageReference = imageReference
@@ -38,15 +38,15 @@ class Specialist {
 
 // extension
 
-extension Specialist {
-    
-    static let mocks: [Specialist] = [
-        
-        Specialist(name: "Maria Perez", specialty: "Hair", minPrice: 599.99, maxPrice: 899.99, imageReference: "person.fill", reviewRating: 4.8, description: "Expert in color treatments and precision cuts with over 10 years of experience in high-end salons. Known for her vibrant balayage and personalized consultations."),
-        Specialist(name: "Fernanda Murillo", specialty: "Nails", minPrice: 200.00, maxPrice: 400.00, imageReference: "person", reviewRating: 4.9, description: "Specializes in nail art and gel extensions. Known for intricate designs and meticulous attention to detail. Clients love her creative custom sets."),
-        Specialist(name: "Rafael Cabrera", specialty: "Hair", minPrice: 399.99, maxPrice: 599.99, imageReference: "person.fill", reviewRating: 4.8, description: "Master barber offering fades, trims, and styling for all hair types. Brings a modern edge to classic cuts with a relaxed, welcoming approach."),
-        Specialist(name: "Emily Carter", specialty: "Lashes", minPrice: 400.00, maxPrice: 800.00, imageReference: "person", reviewRating: 4.6, description: "Certified lash technician providing classic, hybrid, and volume lash sets. Dedicated to enhancing natural beauty with safe, long-lasting results.")
-        
+extension Campsite {
+
+    static let mocks: [Campsite] = [
+
+        Campsite(name: "Riverside Pull-Through", hookupType: "Full Hookup", minPrice: 45.00, maxPrice: 65.00, imageReference: "tent", reviewRating: 4.8, description: "Spacious pull-through site along the river with full hookups. Perfect for large rigs with easy in-out access and scenic water views."),
+        Campsite(name: "Shaded Back-In", hookupType: "30/50 Amp", minPrice: 35.00, maxPrice: 50.00, imageReference: "car", reviewRating: 4.9, description: "Nestled under a canopy of oaks with 30/50 amp service. Quiet and private, ideal for those seeking shade and serenity."),
+        Campsite(name: "Creekside Cabin", hookupType: "Cabin", minPrice: 95.00, maxPrice: 140.00, imageReference: "house", reviewRating: 4.7, description: "Cozy cabin steps from the creek with a covered porch and rustic décor. Sleeps 4 comfortably with climate control and a mini kitchen."),
+        Campsite(name: "Tent Loop Site", hookupType: "Primitive", minPrice: 20.00, maxPrice: 30.00, imageReference: "leaf", reviewRating: 4.6, description: "Primitive tent site in a secluded loop surrounded by nature. Bring your gear and enjoy the sounds of the wild with minimal amenities.")
+
     ]
-    
+
 }
